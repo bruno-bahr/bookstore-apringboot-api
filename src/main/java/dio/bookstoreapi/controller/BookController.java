@@ -60,7 +60,7 @@ public class BookController {
     @DeleteMapping
     public ResponseEntity<String> deleteBook(@RequestParam Integer id){
         bookService.deleteBook(id);
-        return ResponseEntity.ok("Book deleted successfully");
+        return ResponseEntity.ok("Book deleted successfully!");
     }
 
     @GetMapping("/name")
