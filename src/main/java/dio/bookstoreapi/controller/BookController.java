@@ -48,14 +48,19 @@ public class BookController {
 
     @PutMapping()
     public ResponseEntity<Book> updateBook(@RequestBody Book book){
-        bookService.updateBook(book);
-        return ResponseEntity.ok(book);
+        Book book2 = bookRepo.findById(book.getId()).get();
+        book2.setQuantity(book.getQuantity());
+        book2.setAuthor(book.getAuthor());
+        book2.setPrice(book.getPrice());
+        book2.setTitle(book.getTitle());
+        bookService.updateBook(book2);
+        return ResponseEntity.ok(book2);
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deleteBook(@RequestParam Integer id){
+    public ResponseEntity<String> deleteBook(@RequestParam Integer id){
         bookService.deleteBook(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Book deleted successfully");
     }
 
     @GetMapping("/name")
