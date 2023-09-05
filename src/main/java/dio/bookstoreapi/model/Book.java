@@ -1,5 +1,6 @@
 package dio.bookstoreapi.model;
 
+import dio.bookstoreapi.dto.BookDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,15 +18,15 @@ public class Book {
     private Double price;
     private Integer quantity;
 
-    public Book(String title, String author, Double price, Integer quantity) {
+    public Book() {
+
+    }
+
+    public Book(String title, String author, Double price, int quantity) {
         this.title = title;
         this.author = author;
         this.price = price;
         this.quantity = quantity;
-    }
-
-    public Book() {
-
     }
 
     public Integer getId() {

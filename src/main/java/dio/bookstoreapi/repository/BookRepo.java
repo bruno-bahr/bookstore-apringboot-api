@@ -13,5 +13,5 @@ import java.util.Optional;
 public interface BookRepo extends JpaRepository<Book, Integer> {
 
         @Query(value = "select b from Book b where b.title like %?1%" )
-        List<Book> findByName(String title);
+        List<Book> findByName(String name);
 }
