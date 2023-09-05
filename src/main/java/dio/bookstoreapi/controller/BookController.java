@@ -1,5 +1,7 @@
 package dio.bookstoreapi.controller;
 
+import dio.bookstoreapi.dto.BookCompleteDTO;
+import dio.bookstoreapi.dto.BookDTO;
 import dio.bookstoreapi.model.Book;
 import dio.bookstoreapi.repository.BookRepo;
 import dio.bookstoreapi.service.BookService;
@@ -32,27 +34,28 @@ public class BookController {
 
     @PostMapping()
     @ResponseBody
-    public ResponseEntity<Book> addNewBook(@RequestBody Book book){
-        String b1 = book.getTitle();
+    public ResponseEntity<Book> addNewBook(@RequestBody BookDTO book){
+        String b1 = book.title();
         List<Book> titles = bookRepo.findByName(b1);
-        if (!titles.isEmpty()){
+        if (!titles.isEmpty() && titles.get(0).getAuthor().equalsIgnoreCase(book.author())){
             Optional<Book> title = titles.parallelStream().findFirst();
-            int qtty = title.get().getQuantity() + book.getQuantity();
+            int qtty = title.get().getQuantity() + book.quantity();
             title.get().setQuantity(qtty);
             bookRepo.saveAndFlush(title.get());
             return ResponseEntity.ok(title.get());
         }
-        bookService.addNewBook(book);
-        return ResponseEntity.ok(book);
+        Book newBook = new Book(book.title(), book.author(), book.price(), book.quantity());
+        bookService.addNewBook(newBook);
+        return ResponseEntity.ok(newBook);
     }
 
     @PutMapping()
-    public ResponseEntity<Book> updateBook(@RequestBody Book book){
-        Book book2 = bookRepo.findById(book.getId()).get();
-        book2.setQuantity(book.getQuantity());
-        book2.setAuthor(book.getAuthor());
-        book2.setPrice(book.getPrice());
-        book2.setTitle(book.getTitle());
+    public ResponseEntity<Book> updateBook(@RequestBody BookCompleteDTO book){
+        Book book2 = bookRepo.findById(book.id()).get();
+        book2.setQuantity(book.quantity());
+        book2.setAuthor(book.author());
+        book2.setPrice(book.price());
+        book2.setTitle(book.title());
         bookService.updateBook(book2);
         return ResponseEntity.ok(book2);
     }
