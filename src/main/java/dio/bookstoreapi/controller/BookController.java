@@ -44,7 +44,7 @@ public class BookController {
      * This method will add a new in the database.
      * If the book title and the author name match an existing entry,
      * only the field quantity will be updated.
-     * @param book - json containing the information
+     * @param book - json containing the book information
      * @return - it returns the book included or updated in the database.
      */
     @PostMapping()
