@@ -1,6 +1,6 @@
 package dio.bookstoreapi.repository;
 
-import dio.bookstoreapijwt.model.Users;
+import dio.bookstoreapi.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 

@@ -1,11 +1,11 @@
 package dio.bookstoreapi.controller;
 
-import dio.bookstoreapijwt.dto.AuthenticationDTO;
-import dio.bookstoreapijwt.dto.LoginResponseDTO;
-import dio.bookstoreapijwt.dto.RegisterUserDTO;
-import dio.bookstoreapijwt.model.Users;
-import dio.bookstoreapijwt.repository.UserRepo;
-import dio.bookstoreapijwt.service.TokenService;
+import dio.bookstoreapi.dto.AuthenticationDTO;
+import dio.bookstoreapi.dto.LoginResponseDTO;
+import dio.bookstoreapi.dto.RegisterUserDTO;
+import dio.bookstoreapi.model.Users;
+import dio.bookstoreapi.repository.UserRepo;
+import dio.bookstoreapi.service.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
