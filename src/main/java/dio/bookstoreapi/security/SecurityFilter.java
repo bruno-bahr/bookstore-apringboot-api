@@ -1,7 +1,7 @@
 package dio.bookstoreapi.security;
 
-import dio.bookstoreapijwt.repository.UserRepo;
-import dio.bookstoreapijwt.service.TokenService;
+import dio.bookstoreapi.repository.UserRepo;
+import dio.bookstoreapi.service.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
